@@ -3,6 +3,7 @@ kind: "PersistentVolume"
 metadata:
   name: ebs-volume
 spec:
+  storageClassName: ""
   capacity:
     storage: "2Gi" 
   accessModes:
@@ -11,17 +12,17 @@ spec:
     fsType: ext4
     volumeID: vol-0d46a9c0bb23f7fce
 ---
-# apiVersion: v1
-# kind: PersistentVolumeClaim
-# metadata:
-#   name: ebs-volume
-# spec:
-#   accessModes:
-#     - ReadWriteOnce
-#   resources:
-#     requests:
-#       storage: 5Gi
-#   selector:
-#     matchLabels:
-#       pv: local
-#   storageClassName: hostpath
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: ebs-volume
+spec:
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 1Gi
+  # selector:
+  #   matchLabels:
+  #     pv: local
+  storageClassName: ""
